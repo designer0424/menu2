@@ -1,0 +1,357 @@
+/* ============================================
+   MONTPELLIER RESTOBAR — ESTILOS
+   Tema: fondo marfil / acentos navy + dorado
+   ============================================ */
+:root {
+  --verde-oscuro:      #133233;
+  --azul-marino:       #0E283B;
+  --crema:             #DED7CE;
+  --dorado:            #A37C4A;
+  --gris:              #A9A9A9;
+  --dorado-claro:      #C49A65;
+  --dorado-brillante:  #D4AF7A;
+  --dorado-oscuro:     #8B6534; /* dorado con más contraste sobre fondo claro */
+
+  /* tema claro */
+  --fondo:             var(--crema);
+  --texto:             var(--azul-marino);
+  --texto-suave:       rgba(14, 40, 59, 0.62);
+  --texto-tenue:       rgba(14, 40, 59, 0.48);
+  --separador:         rgba(14, 40, 59, 0.16);
+  --separador-dorado:  rgba(163, 124, 74, 0.4);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(163,124,74,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(19,50,51,0.06) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── HEADER ────────────────────────────────── */
+.menu-header {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 52px 24px 36px;
+  background: var(--azul-marino);
+  border-bottom: 1px solid var(--separador-dorado);
+}
+
+.logo-icon { width: 60px; height: 60px; margin: 0 auto 18px; }
+.logo-icon img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(163,124,74,0.4));
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 400; letter-spacing: 0.02em;
+  color: var(--crema); line-height: 1.1;
+  animation: fadeDown .8s ease both;
+}
+.brand-name span { color: var(--dorado-brillante); font-style: italic; }
+
+.brand-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem; letter-spacing: 0.38em;
+  text-transform: uppercase; color: var(--dorado-brillante);
+  margin-top: 5px; opacity: .85;
+}
+
+.ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 22px auto 0; }
+.ornament-line { height: 1px; width: 55px; background: linear-gradient(to right, transparent, var(--dorado)); }
+.ornament-line.right { background: linear-gradient(to left, transparent, var(--dorado)); }
+.ornament-diamond { width: 6px; height: 6px; background: var(--dorado); transform: rotate(45deg); }
+
+/* Ornamentos usados fuera del header (sobre fondo marfil) */
+.menu-content .ornament .ornament-line,
+.welcome-ornament .ornament-line,
+.welcome-divider .ornament-line {
+  background: linear-gradient(to right, transparent, var(--dorado-oscuro));
+}
+.menu-content .ornament .ornament-line.right,
+.welcome-ornament .ornament-line.right,
+.welcome-divider .ornament-line.right {
+  background: linear-gradient(to left, transparent, var(--dorado-oscuro));
+}
+.menu-content .ornament .ornament-diamond,
+.welcome-ornament .ornament-diamond,
+.welcome-divider .ornament-diamond {
+  background: var(--dorado-oscuro);
+}
+
+/* ── NAV ───────────────────────────────────── */
+.category-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14,40,59,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--separador-dorado);
+  overflow-x: auto; scrollbar-width: none;
+}
+.category-nav::-webkit-scrollbar { display: none; }
+
+.nav-inner { display: flex; padding: 0 16px; min-width: max-content; }
+
+.nav-btn {
+  background: none; border: none;
+  color: var(--gris);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 15px 17px; cursor: pointer;
+  transition: color .3s;
+  position: relative; white-space: nowrap;
+}
+.nav-btn::after {
+  content: ''; position: absolute; bottom: 0;
+  left: 50%; transform: translateX(-50%) scaleX(0);
+  width: 70%; height: 1.5px; background: var(--dorado);
+  transition: transform .3s;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--dorado-brillante); }
+.nav-btn.active::after, .nav-btn:hover::after { transform: translateX(-50%) scaleX(1); }
+
+/* ── SECCIONES ─────────────────────────────── */
+.menu-content { position: relative; z-index: 1; padding: 0 0 80px; background: var(--fondo); }
+
+.menu-section { display: none; padding: 38px 20px 20px; animation: fadeIn .45s ease both; }
+.menu-section.active { display: block; }
+
+.section-header { text-align: center; margin-bottom: 32px; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  font-weight: 400; font-style: italic;
+  color: var(--azul-marino);
+}
+.section-tagline {
+  font-size: 0.68rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--dorado-oscuro);
+  margin-top: 6px; opacity: .9;
+}
+
+/* ── TARJETAS DE PLATOS ────────────────────── */
+.items-grid {
+  display: flex; flex-direction: column; gap: 1px;
+  max-width: 680px; margin: 0 auto;
+}
+
+.menu-item {
+  position: relative; padding: 0;
+  border-bottom: 1px solid var(--separador);
+  cursor: pointer; transition: background .25s; border-radius: 2px;
+}
+.menu-item:first-child { border-top: 1px solid var(--separador); }
+.menu-item:hover { background: rgba(163,124,74,0.08); }
+
+.item-inner { display: flex; gap: 14px; align-items: center; padding: 18px 4px; }
+
+.item-thumb {
+  flex-shrink: 0; width: 72px; height: 72px;
+  border-radius: 2px; overflow: hidden;
+  background: rgba(14,40,59,0.05); border: 1px solid var(--separador);
+}
+.item-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s ease; display: block;
+}
+.menu-item:hover .item-thumb img { transform: scale(1.07); }
+
+.item-info { flex: 1; min-width: 0; }
+.item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 400;
+  color: var(--texto); transition: color .25s;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.menu-item:hover .item-name { color: var(--dorado-oscuro); }
+
+.item-desc {
+  font-size: 0.78rem; color: var(--texto-suave);
+  margin-top: 4px; font-style: italic; line-height: 1.5;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.tag {
+  font-size: 0.52rem; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 2px 6px;
+  border: 1px solid var(--separador-dorado);
+  color: var(--dorado-oscuro); font-family: 'Cormorant Garamond', serif;
+}
+.tag.vegano  { border-color: rgba(75,120,90,.5);   color: #3f7d55; }
+.tag.popular { border-color: rgba(163,124,74,.6);  color: var(--dorado-oscuro); }
+.tag.chef    { border-color: rgba(19,50,51,.4);    color: var(--verde-oscuro); }
+
+.item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.item-price { font-size: 1rem; color: var(--dorado-oscuro); letter-spacing: 0.03em; white-space: nowrap; }
+.item-arrow {
+  width: 20px; height: 20px; border: 1px solid var(--separador-dorado);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--dorado-oscuro); font-size: 0.75rem; transition: all .25s;
+}
+.menu-item:hover .item-arrow { background: rgba(163,124,74,0.18); border-color: var(--dorado); }
+
+/* ── PRECIOS DOBLES ────────────────────────── */
+.item-prices { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.item-prices .item-price { font-size: 0.85rem; color: var(--dorado-oscuro); }
+
+/* ═══════════════════════════════════════════
+   MODAL (se mantiene navy — como tus tarjetas)
+   ═══════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(5,15,25,0.6); backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); display: flex; align-items: flex-end;
+  opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+
+.modal-card {
+  background: var(--azul-marino); width: 100%; max-width: 680px; margin: 0 auto;
+  border-top: 1px solid var(--separador-dorado); border-left: 1px solid var(--separador-dorado);
+  border-right: 1px solid var(--separador-dorado); border-radius: 4px 4px 0 0;
+  overflow: hidden; transform: translateY(60px);
+  transition: transform .4s cubic-bezier(.16,1,.3,1); max-height: 92vh;
+  display: flex; flex-direction: column;
+}
+.modal-overlay.open .modal-card { transform: translateY(0); }
+
+.modal-handle { width: 40px; height: 4px; background: rgba(163,124,74,0.35); border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
+
+.modal-img-wrap { width: 100%; height: 220px; flex-shrink: 0; overflow: hidden; position: relative; background: var(--verde-oscuro); }
+.modal-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.modal-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, var(--azul-marino), transparent); }
+
+.modal-img-placeholder { width: 100%; height: 220px; background: var(--verde-oscuro); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.modal-img-placeholder svg { opacity: 0.25; }
+
+.modal-body { padding: 20px 24px 32px; overflow-y: auto; flex: 1; }
+
+.modal-close {
+  position: absolute; top: 14px; right: 16px;
+  background: rgba(14,40,59,0.75); border: 1px solid var(--separador-dorado);
+  color: var(--crema); width: 30px; height: 30px; border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; z-index: 10; transition: background .2s;
+}
+.modal-close:hover { background: rgba(163,124,74,0.3); }
+
+.modal-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.modal-tags .tag { color: var(--dorado-brillante); border-color: var(--separador-dorado); }
+.modal-name { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 400; color: var(--crema); line-height: 1.2; }
+.modal-price { font-size: 1.2rem; color: var(--dorado-brillante); margin-top: 4px; letter-spacing: 0.05em; }
+.modal-divider { height: 1px; background: var(--separador-dorado); margin: 16px 0; }
+.modal-desc { font-size: 0.92rem; color: var(--crema); line-height: 1.75; font-style: italic; opacity: 0.88; }
+.modal-allergens-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dorado-brillante); margin-top: 18px; margin-bottom: 6px; display: block; }
+.modal-allergens-value { font-size: 0.82rem; color: var(--gris); line-height: 1.5; }
+
+/* ── FOOTER ────────────────────────────────── */
+.menu-footer { position: relative; z-index: 1; text-align: center; padding: 28px 24px 48px; border-top: 1px solid var(--separador); background: var(--fondo); }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dorado-oscuro); opacity: .8; }
+.footer-note { font-size: 0.7rem; color: var(--texto-tenue); margin-top: 7px; font-style: italic; }
+
+/* ── ANIMACIONES ───────────────────────────── */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn   { from { opacity: 0; transform: translateY(8px);  } to { opacity: 1; transform: translateY(0); } }
+@keyframes welcomeFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ═══════════════════════════════════════════════════
+   BIENVENIDA — GASTÓN GUSTÓN (sobre fondo marfil)
+   ═══════════════════════════════════════════════════ */
+.welcome-section {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+  padding: 28px 20px 24px;
+  border-bottom: 1px solid var(--separador);
+  animation: welcomeFade .9s ease .2s both;
+}
+
+.welcome-ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 16px;
+}
+
+.welcome-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 400; text-align: center;
+  color: var(--dorado-oscuro);
+  margin-bottom: 18px; line-height: 1.25;
+}
+
+/* LAYOUT: texto izquierda, imagen derecha — siempre en fila */
+.welcome-body {
+  display: block;
+}
+
+.welcome-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--texto);
+  opacity: 0.9;
+  hyphens: none;
+  word-break: normal;
+}
+.welcome-text p { margin-bottom: 10px; }
+.welcome-text p:last-child { margin-bottom: 0; }
+.welcome-text strong { color: var(--dorado-oscuro); font-style: italic; font-weight: 500; }
+.welcome-invite { color: var(--dorado-oscuro) !important; font-style: italic; }
+
+/* Imagen de Gastón — tamaño fijo pequeño */
+.welcome-mascot {
+  float: right;
+  width: 180px;
+  margin: 0 0 12px 16px;
+}
+
+.welcome-mascot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(14,40,59,0.15));
+}
+
+@media (max-width: 400px) {
+  .welcome-mascot { width: 130px; }
+}
+
+.welcome-closing { margin-top: 20px; }
+.welcome-divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+.closing-line1 { font-size: 0.88rem; color: var(--texto-suave); opacity: 0.9; text-align: center; margin-bottom: 4px; }
+.closing-line2 { font-family: 'Playfair Display', serif; font-size: clamp(0.9rem, 3vw, 1.05rem); font-style: italic; color: var(--dorado-oscuro); text-align: center; line-height: 1.4; }
+
+/* Placeholder oculto — solo aparece si no hay imagen */
+.mascot-placeholder { display: none; }
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media (max-width: 400px) {
+  .nav-btn { padding: 13px 11px; font-size: .62rem; }
+  .item-thumb { width: 62px; height: 62px; }
+  .modal-img-wrap, .modal-img-placeholder { height: 190px; }
+  .welcome-mascot { width: 110px; }
+  .welcome-mascot img { width: 110px; height: 155px; }
+  .welcome-text { font-size: 0.78rem; }
+  .welcome-section { padding: 20px 14px 20px; }
+}
+.autor-title {
+  color: var(--dorado-oscuro);
+}

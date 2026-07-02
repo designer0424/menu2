@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a1e2b" />
+  <title>MontPellier Restobar — Menú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="menu-header">
+    <div class="logo-icon">
+      <!-- Logo en PNG: coloca aquí tu archivo (ej: assets/logo.png) -->
+      <img src="assets/logo.png" alt="Logotipo MontPellier Restobar" />
+    </div>
+    <h1 class="brand-name">Mont<span>Pellier</span></h1>
+    <p class="brand-subtitle">Restobar</p>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line right"></div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN BIENVENIDA — GASTÓN GUSTÓN
+       ══════════════════════════════════════════ -->
+  <section class="welcome-section">
+
+    <!-- Ornamento superior -->
+    <div class="welcome-ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line right"></div>
+    </div>
+
+    <h2 class="welcome-title">¡Bienvenido, Querido Comensal!</h2>
+
+<div class="welcome-body">
+
+  <!-- Mascota -->
+  <div class="welcome-mascot">
+    <img src="assets/gaston.png" alt="Gastón Gustón, mascota de Montpellier Restobar" />
+  </div>
+
+  <!-- Texto -->
+  <div class="welcome-text">
+    <p>Permíteme presentarme, soy <strong>Gastón Gustón</strong> y viajé desde tierras lejanas, siguiendo el aroma de la buena cocina y el placer de servir sonrisas en cada mesa. Cuando llegué a Cartagena, supe que este sería mi hogar.</p>
+    <p>Traje conmigo una idea muy clara, combinar la frescura del mar con los sabores generosos de la tierra, pero sin formalidades excesivas. Así nace Montpellier, un Restobar en el sur de la ciudad, donde cada plato cuenta una historia y cada visita se convierte en experiencia.</p>
+    <p>Nuestros ingredientes son los más frescos del mar, frutos de la tierra que aportan calidez y en donde la magia ocurre cuando se combinan con creatividad y en equilibrio porque comer delicioso, también puede ser divertido e inolvidable.</p>
+    <p class="welcome-invite">¡Así que ponte cómodo y déjate llevar!</p>
+  </div>
+
+</div>
+    </div><!-- /.welcome-body -->
+
+    <!-- Cierre -->
+    <div class="welcome-closing">
+      <div class="welcome-divider">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line right"></div>
+      </div>
+      <p class="closing-line1">Hoy no viniste solo a comer…</p>
+      <p class="closing-line2">¡Vienes a descubrir el arte de disfrutar la vida en cada bocado!</p>
+    </div>
+
+  </section>
+  <!-- ══ /BIENVENIDA ══ -->
+
+  <!-- NAVEGACIÓN -->
+  <nav class="category-nav">
+    <div class="nav-inner" id="category-nav"></div>
+  </nav>
+
+  <!-- CONTENIDO (generado por script.js) -->
+  <main class="menu-content" id="menu-content"></main>
+
+  <!-- FOOTER -->
+  <footer class="menu-footer">
+    <p class="footer-logo">MontPellier Restobar</p>
+    <p class="footer-note">
+      Todos los precios incluyen IVA &nbsp;·&nbsp;
+      Informe a su mesero sobre alergias alimentarias
+    </p>
+  </footer>
+
+  <!-- MODAL DE DETALLE -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-card" id="modal-card" style="position:relative;"></div>
+  </div>
+
+  <script src="menu-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
